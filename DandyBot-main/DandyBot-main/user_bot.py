@@ -15,21 +15,67 @@
             return "down"
         else:
             return "up"
-    if check("level") == 3:
-
-        '''
-        if not check("wall", x, y - 1):
-            if not check("wall", x + 1, y):
+    elif check("level") == 3:
+        for i in range(1, 20): # Left
+            if check("gold", x - i, y):
+                return "left"
+        for i in range(1, 28): # Right (and Up for middle)
+            if check("wall", x + i, y):
+                break
+            elif check("gold", x + i, y):
                 return "right"
-            else:
+            if i > 10:
+                for j in range(1, 8):
+                    if check("wall", x, y - j):
+                        break
+                    elif check("gold", x, y - j):
+                        return "up"
+        for i in range(1, 25): # Up
+            if check("wall", x, y - i):
+                break
+            elif check("gold", x, y - i):
                 return "up"
-        
-        
-        if not check("wall", x + 1, y):
-            return "right"
-        elif not check("wall", x, y - 1) and check("wall", x + 1, y):
-            return "up"
-        elif not check("wall", x - 1, y + 1) and not check("wall", x + 1, y):
-            return "down"
-            '''
+        for i in range(1, 8): # Down
+            if check("wall", x, y + i):
+                break
+            elif check("gold", x, y + i):
+                return "down"
+        for i in range(1, 6): # Down for middle
+            if check("wall", x, y - i):
+                return "down"
+        if check("wall", x, y + 1): # For else Left
+            return "left"
+        return "down"
+
+    elif check("level") == 4:
+        for i in range(1, 11): # Up
+            if check("wall", x, y - i):
+                break
+            if check("gold", x, y - i):
+                return "up"
+        for i in range(1, 101): # Right
+            if check("wall", x + i, y):
+                break
+            if check("gold", x + i, y):
+                return "right"
+        for i in range(1, 11): # Down
+            if check("wall", x, y + i):
+                break
+            if check("gold", x, y + i):
+                return "down"
+        for i in range(1, 11): # Left
+            if check("wall", x - i, y):
+                break
+            if check("gold", x - i, y):
+                return "left"
+        d, l = 1, 1
+        for i in range(1, 13):
+            if check("wall", x, y + i):
+                d = 0
+            if check("wall", x - i, y):
+                l = 0
+        if d: return "down"
+        if l: return "left"
+        #if check("wall", x - 1, y) and check("wall", x - 1, y): return "up"
+        return "right"
     return "pass"
