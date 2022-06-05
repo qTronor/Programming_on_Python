@@ -8,4 +8,5 @@ def main(y, z):
     return ans
 
 
-main(0.94, 0.19)
+print(main(0.94, 0.19))
+print(main(0.56, -0.08))

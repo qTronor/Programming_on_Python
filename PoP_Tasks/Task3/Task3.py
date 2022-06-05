@@ -9,4 +9,4 @@ def main(a, b, y):
     return ans
 
 
-main(4, 6, 0.78)
+print(main(4, 6, 0.78))
