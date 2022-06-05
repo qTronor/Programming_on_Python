@@ -47,35 +47,57 @@
             return "left"
         return "down"
 
+
     elif check("level") == 4:
-        for i in range(1, 11): # Up
-            if check("wall", x, y - i):
-                break
-            if check("gold", x, y - i):
-                return "up"
-        for i in range(1, 101): # Right
-            if check("wall", x + i, y):
-                break
-            if check("gold", x + i, y):
+
+        if check('gold', x, y):
+            return "take"
+
+        if check('wall', x - 2, y) and check('wall', x - 3, y) and check('wall', x + 1, y) and check('wall', x - 3,
+                                                                                                     y + 1) and x > 3:
+            return "left"
+
+        if check('wall', x - 1, y) and check('wall', x + 2, y) and check('wall', x - 1, y - 1):
+            return "right"
+
+        if check('wall', x - 1, y):
+
+            if check('wall', x, y - 1):
                 return "right"
-        for i in range(1, 11): # Down
-            if check("wall", x, y + i):
-                break
-            if check("gold", x, y + i):
+
+            return "up"
+
+        if check('wall', x, y - 1):
+
+            if check('wall', x + 1, y):
                 return "down"
-        for i in range(1, 11): # Left
-            if check("wall", x - i, y):
-                break
-            if check("gold", x - i, y):
+
+            return "right"
+
+        if check('wall', x + 1, y):
+
+            if check('wall', x, y + 1):
                 return "left"
-        d, l = 1, 1
-        for i in range(1, 13):
-            if check("wall", x, y + i):
-                d = 0
-            if check("wall", x - i, y):
-                l = 0
-        if d: return "down"
-        if l: return "left"
-        #if check("wall", x - 1, y) and check("wall", x - 1, y): return "up"
-        return "right"
+
+            return "down"
+
+        if check('wall', x, y + 1):
+
+            if check('wall', x - 1, y):
+                return "up"
+
+            return "left"
+
+        if check('wall', x + 1, y + 1):
+            return "down"
+
+        if check('wall', x - 1, y + 1):
+            return "left"
+
+        if check('wall', x - 1, y - 1):
+            return "up"
+
+        if check('wall', x + 1, y - 1):
+            return "right"
+
     return "pass"

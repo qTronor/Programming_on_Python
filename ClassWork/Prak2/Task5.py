@@ -23,7 +23,7 @@ for paragraph in range(3):
     for sentence in range(3):
         for lexemes in range(5):
             text += random.choice(d[lexemes])
-        text += ' '
+        text += ' \n'
     text += '\n\n'
 
 #print(text)

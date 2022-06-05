@@ -32,7 +32,7 @@ if __name__ == "__main__":
     for i in range(20):
         for j in range(20):
             if i < 10 and j < 10:
-                axs[i][j].imshow(mas_sv(1), cmap='inferno', interpolation='nearest')
+                axs[i][j].imshow(mas_sv(1), cmap='spring', interpolation='nearest')
             elif i >= 10 and j >= 10:
                 axs[i][j].imshow(mas_sc(1), cmap='YlOrBr', interpolation='nearest')
             elif i < 10 and j >= 10:
